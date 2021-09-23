@@ -10,7 +10,7 @@ export default (code) => {
         './plugin.js'
       ]
     }, function(err, ret) {
-      console.log(err, ret);
+      console.log(err);
       if(!err) {
         resolve(ret.code);
       }

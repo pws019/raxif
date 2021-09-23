@@ -12,7 +12,7 @@
 	"activationEvents": [
 		"onCommand:raxif.format"
 	],
-	"main": "./outDir/extension.js",
+	"main": "./out/extension.js",
 	"contributes": {
 		"menus": {
 			"editor/context": [

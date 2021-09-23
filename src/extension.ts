@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
 			// 遍历并替换文本
 			allSelections.forEach(async (selection) => {
 				const text = editor.document.getText(selection);
-				const res= await format(text);;
+				const res= await format(text);
 				editBuilder.replace(selection, res);
 			})
 		})
