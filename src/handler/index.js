@@ -1,8 +1,7 @@
-
 import { transform } from "@babel/core";
+import * as xxx from "@babel/plugin-syntax-jsx";
 
-
-export default handler = (code) => {
+export default (code) => {
   return new Promise((resolve) => {
     transform(code, {
       presets: [],

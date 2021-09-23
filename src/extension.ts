@@ -40,9 +40,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 		editor.edit(editBuilder => {
 			// 遍历并替换文本
-			allSelections.forEach(selection => {
-				const text = editor.document.getText(selection)
-				editBuilder.replace(selection, format(text))
+			allSelections.forEach(async (selection) => {
+				const text = editor.document.getText(selection);
+				const res= await format(text);;
+				editBuilder.replace(selection, res);
 			})
 		})
 

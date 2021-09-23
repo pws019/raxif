@@ -7,7 +7,7 @@ export default function (babel) {
       JSXElement(path) {
         const rIndex = path.node.openingElement.attributes.findIndex((v) => {
           // console.log(v.name)
-          return v.name && v.name.name === "r-show";
+          return v.name && v.name.name === "r-if";
         });
         // console.log(rIndex)
         if (typeof rIndex === "undefined" || rIndex < 0) {
