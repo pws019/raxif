@@ -36,16 +36,34 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// 编辑器对象
 		// 获取所有选中文本
-		const allSelections = editor.selections
+		const allSelections = editor.selections;
 
-		editor.edit(editBuilder => {
-			// 遍历并替换文本
-			allSelections.forEach(async (selection) => {
-				const text = editor.document.getText(selection);
-				const res= await format(text);
+		allSelections.forEach(async (selection) => {
+			const text = editor.document.getText(selection);
+			try {
+				var res = await format(text);
+			} catch(err) {
+				console.log(err);
+			}
+			
+			editor.edit(editBuilder => {
 				editBuilder.replace(selection, res);
 			})
 		})
+
+		// editor.edit(editBuilder => {
+		// 	// 遍历并替换文本
+		// 	allSelections.forEach((selection) => {
+		// 		const text = editor.document.getText(selection);
+		// 		try {
+		// 			var res = format(text);
+		// 		} catch(err) {
+		// 			console.log(err);
+		// 		}
+				
+		// 		editBuilder.replace(selection, res);
+		// 	})
+		// })
 
 		context.subscriptions.push(disposable);
 	});

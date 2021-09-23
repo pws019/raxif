@@ -1,13 +1,20 @@
 import { transform } from "@babel/core";
-import * as xxx from "@babel/plugin-syntax-jsx";
+const path = require('path');
+
+const pluginPath = path.resolve(__dirname, './plugin.js');
+const workPath = path.resolve(__dirname, '../../');
 
 export default (code) => {
   return new Promise((resolve) => {
     transform(code, {
+      cwd: workPath,
+      parserOpts: {
+        createParenthesizedExpressions: true,
+      },
       presets: [],
       plugins: [
-        "@babel/plugin-syntax-jsx",
-        './plugin.js'
+        '@babel/plugin-syntax-jsx',
+        pluginPath,
       ]
     }, function(err, ret) {
       console.log(err);
@@ -17,3 +24,15 @@ export default (code) => {
     });
   })
 }
+
+// export default (code) => {
+//   const ret = transformSync(code, {
+//     cwd: workPath,
+//     presets: [],
+//     plugins: [
+//       '@babel/plugin-syntax-jsx',
+//       pluginPath,
+//     ]
+//   })
+//   return ret.code;
+// }
