@@ -3,7 +3,7 @@ import { window } from "vscode";
 type LogLevel = "DEBUG" | "INFO" | "WARN" | "ERROR" | "NONE";
 
 export class LoggingService {
-  private outputChannel = window.createOutputChannel("Prettier");
+  private outputChannel = window.createOutputChannel("RaxIf");
 
   private logLevel: LogLevel = "INFO";
 
